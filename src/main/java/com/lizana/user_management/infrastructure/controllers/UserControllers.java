@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("api/users")
 @AllArgsConstructor
 public class UserControllers {
 
@@ -27,14 +27,14 @@ public class UserControllers {
   @PostMapping("register")
   public ResponseEntity<Mono<String>> getUser(
       @RequestBody UserDtoRegistryRequest userDtoRegistryRequest) {
-    return new ResponseEntity<>(userService.UserRegistryService(userDtoRegistryRequest),
+    return new ResponseEntity<>(userService.userRegistryService(userDtoRegistryRequest),
         HttpStatus.OK);
   }
 
   @PostMapping("login")
   public Mono<ResponseEntity<String>> userLogin(
       @RequestBody UserDtoLoginRequest userDtoLoginRequest) {
-    return userService.UserLoginService(userDtoLoginRequest)
+    return userService.userLoginService(userDtoLoginRequest)
         .map(p -> new ResponseEntity<>(p, HttpStatus.OK))
         .switchIfEmpty(Mono.just(new ResponseEntity<>(HttpStatus.NOT_FOUND)));
   }
@@ -42,13 +42,13 @@ public class UserControllers {
   @GetMapping("profile/{userId}")
   public ResponseEntity<Mono<UserProfileDtoResponse>> getUserProfile(
       @PathVariable("userId") String userID) {
-    return new ResponseEntity<>(userService.GetProfileService(userID), HttpStatus.OK);
+    return new ResponseEntity<>(userService.getProfileService(userID), HttpStatus.OK);
   }
 
-  @PutMapping("profile")
-  public ResponseEntity<Mono<String>> putUserData(
+  @PutMapping("profile/{userId}")
+  public ResponseEntity<Mono<String>> putUserData(@PathVariable("userId") String userId,
       @RequestBody UserDtoRegistryRequest userDtoRegistryRequest) {
-    return new ResponseEntity<>(userService.UserUpdateProfile(userDtoRegistryRequest),
+    return new ResponseEntity<>(userService.userUpdateProfile(userDtoRegistryRequest),
         HttpStatus.OK);
   }
 

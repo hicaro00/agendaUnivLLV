@@ -10,22 +10,22 @@ import reactor.core.publisher.Mono;
 @Service
 public class UserServiceImplents implements UserService {
   @Override
-  public Mono<String> UserRegistryService(UserDtoRegistryRequest userDtoRegistryRequest) {
+  public Mono<String> userRegistryService(UserDtoRegistryRequest userDtoRegistryRequest) {
     return Mono.just("Usuario registrado con exito");
   }
 
   @Override
-  public Mono<String> UserLoginService(UserDtoLoginRequest userDtoLoginRequest) {
+  public Mono<String> userLoginService(UserDtoLoginRequest userDtoLoginRequest) {
     return Mono.just("usuario LOgueado Correctamente");
   }
 
   @Override
-  public Mono<UserProfileDtoResponse> GetProfileService(String userId) {
+  public Mono<UserProfileDtoResponse> getProfileService(String userId) {
     return null;
   }
 
   @Override
-  public Mono<String> UserUpdateProfile(UserDtoRegistryRequest userDtoRegistryRequest) {
+  public Mono<String> userUpdateProfile(UserDtoRegistryRequest userDtoRegistryRequest) {
     return Mono.just("Datos actualizaddos correctamente");
   }
 }

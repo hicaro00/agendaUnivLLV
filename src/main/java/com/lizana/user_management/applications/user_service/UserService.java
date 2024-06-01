@@ -7,11 +7,11 @@ import reactor.core.publisher.Mono;
 
 public interface UserService {
 
-  Mono <String> UserRegistryService(UserDtoRegistryRequest userDtoRegistryRequest);
+  Mono <String> userRegistryService(UserDtoRegistryRequest userDtoRegistryRequest);
 
-  Mono<String> UserLoginService(UserDtoLoginRequest userDtoLoginRequest);
+  Mono<String> userLoginService(UserDtoLoginRequest userDtoLoginRequest);
 
-  Mono<UserProfileDtoResponse> GetProfileService(String userId);
+  Mono<UserProfileDtoResponse> getProfileService(String userId);
 
-  Mono<String> UserUpdateProfile(UserDtoRegistryRequest userDtoRegistryRequest);
+  Mono<String> userUpdateProfile(UserDtoRegistryRequest userDtoRegistryRequest);
 }
